@@ -40,19 +40,19 @@ def save():
         messagebox.showinfo(title="Oops", message="Please make sure you haven't left any fields empty.")
     else:
         try:
-            with open("Password Manager updated/data.json", "r") as data_file:
+            with open("./data.json", "r") as data_file:
                 #Reading old data
                 data = json.load(data_file)
 
         except FileNotFoundError:
-            with open("Password Manager updated/data.json", "w") as data_file:
+            with open("./data.json", "w") as data_file:
                 json.dump(new_data, data_file, indent = 4)
 
         else:
             #Updating old data wuth new data
             data.update(new_data)
 
-            with open("Password Manager updated/data.json", "w") as data_file:
+            with open("./data.json", "w") as data_file:
                 #Saving updated data
                 json.dump(data, data_file, indent = 4)
 
@@ -65,7 +65,7 @@ def save():
 def find_password():
     website = website_entry.get()
     try:
-        with open("Password Manager updated/data.json") as data_file:
+        with open("./data.json") as data_file:
             data = json.load(data_file)
     except FileNotFoundError:
         messagebox.showinfo(title = "Error", message = "No Data File Found!")
@@ -84,7 +84,7 @@ window.title("Password Manager")
 window.config(padx=50, pady=50)
 
 canvas = Canvas(height=200, width=200)
-logo_img = PhotoImage(file="Password Manager updated/logo.png")
+logo_img = PhotoImage(file="./logo.png")
 canvas.create_image(100, 100, image=logo_img)
 canvas.grid(row=0, column=1)
 
